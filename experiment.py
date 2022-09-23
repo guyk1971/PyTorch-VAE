@@ -158,7 +158,7 @@ class VAEXperiment(pl.LightningModule):
             self.sample_dataloader =  DataLoader(CelebA(root = self.params['data_path'],
                                                         split = "test",
                                                         transform=transform,
-                                                        download=False),
+                                                        download=True),
                                                  batch_size= 144,
                                                  shuffle = True,
                                                  drop_last=True)

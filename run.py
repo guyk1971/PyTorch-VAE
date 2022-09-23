@@ -42,7 +42,7 @@ experiment = VAEXperiment(model,
                           config['exp_params'])
 
 runner = Trainer(default_save_path=f"{tt_logger.save_dir}",
-                 min_nb_epochs=1,
+                 min_epochs=1,
                  logger=tt_logger,
                  log_save_interval=100,
                  train_percent_check=1.,
