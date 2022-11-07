@@ -6,7 +6,7 @@ model_params:
 
 
 data_params:
-  data_path: "/workspace/Data/CelebA"
+  data_path: "/workspace/datasets/celeba/"
   train_batch_size: 64
   val_batch_size:  64
   patch_size: 64
