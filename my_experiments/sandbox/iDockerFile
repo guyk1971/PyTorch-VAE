@@ -1,0 +1,17 @@
+FROM  nvcr.io/nvidia/pytorch:22.07-py3
+# maybe we also have a requirements.txt file
+# COPY ./requirements.txt /workspace/requirements.txt
+RUN pip install pytorch-lightning
+# COPY ./project /workspace/project
+# instead of copying the files, we'll map the project folder when running the container s.t. we can debug it
+
+# to build the image
+# docker build -t PytorchVAE -f iDockerFile .
+
+# to run the image from container:
+# docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/PyTorchVAE:/workspace/PyTorchVAE -v /home/guy/sd1tb/Dataset_path:/workspace/Data PyTorchVAE 
+
+
+# to be able to run jupyter server from the container, that can be accessed from an external client:
+# docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/PyTorch-VAE:/workspace/PyTorch-VAE -v /home/guy/sd1tb/datasets/CelebA:/workspace/Data/CelebA <-v source_data_path:/workspace/Data/dest_data_folder> --rm -p 8888:8888 nvcr.io/nvidia/pytorch:22.07-py3_pl
+# note that the above also include additional datasets that I might want to map
