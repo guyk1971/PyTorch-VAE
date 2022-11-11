@@ -23,6 +23,18 @@ class MyDataset(Dataset):
     def __getitem__(self, idx):
         pass
 
+#----------------------------------------------------
+CelebA_train_transforms = transforms.Compose([transforms.RandomHorizontalFlip(),
+                                              transforms.CenterCrop(148),
+                                              transforms.Resize(256),
+                                              transforms.ToTensor(),])
+        
+ClebA_val_transforms = transforms.Compose([transforms.RandomHorizontalFlip(),
+                                            transforms.CenterCrop(148),
+                                            transforms.Resize(256),
+                                            transforms.ToTensor(),])
+
+
 
 class MyCelebA(CelebA):
     """
@@ -36,7 +48,7 @@ class MyCelebA(CelebA):
         return True
     
     
-
+#----------------------------------------------------
 class OxfordPets(Dataset):
     """
     URL = https://www.robots.ox.ac.uk/~vgg/data/pets/
@@ -63,6 +75,9 @@ class OxfordPets(Dataset):
         
         return img, 0.0 # dummy datat to prevent breaking 
 
+
+
+#===================================================================================
 class VAEDataset(LightningDataModule):
     """
     PyTorch Lightning data module 
