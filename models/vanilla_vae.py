@@ -3,7 +3,7 @@ from models import BaseVAE
 from torch import nn
 from torch.nn import functional as F
 from .types_ import *
-
+import math 
 
 class VanillaVAE(BaseVAE):
 
@@ -20,7 +20,7 @@ class VanillaVAE(BaseVAE):
         modules = []
         if hidden_dims is None:
             hidden_dims = [32, 64, 128, 256, 512]
-
+        self.hidden_dims=hidden_dims
         # Build Encoder
         for h_dim in hidden_dims:
             modules.append(
@@ -31,16 +31,18 @@ class VanillaVAE(BaseVAE):
                     nn.LeakyReLU())
             )
             in_channels = h_dim
-
+        # assuming square input image: patch_size*patch_size        
         self.encoder = nn.Sequential(*modules)
-        self.fc_mu = nn.Linear(hidden_dims[-1]*4, latent_dim)
-        self.fc_var = nn.Linear(hidden_dims[-1]*4, latent_dim)
+        # enc_out_size = self.encoder(torch.zeros(1,3,input_size,input_size)).shape
+        self.enc_out_size = kwargs.get('patch_size',64)//2**len(hidden_dims)        
+        self.fc_mu = nn.Linear(hidden_dims[-1]*self.enc_out_size*self.enc_out_size, latent_dim)
+        self.fc_var = nn.Linear(hidden_dims[-1]*self.enc_out_size*self.enc_out_size, latent_dim)
 
 
         # Build Decoder
         modules = []
-
-        self.decoder_input = nn.Linear(latent_dim, hidden_dims[-1] * 4)
+        self.decoder_input_size = (hidden_dims[-1],self.enc_out_size,self.enc_out_size)
+        self.decoder_input = nn.Linear(latent_dim, math.prod(self.decoder_input_size))
 
         hidden_dims.reverse()
 
@@ -99,7 +101,8 @@ class VanillaVAE(BaseVAE):
         :return: (Tensor) [B x C x H x W]
         """
         result = self.decoder_input(z)
-        result = result.view(-1, 512, 2, 2)
+        # result = result.view(-1, 512, 2, 2)
+        result = result.view(-1, *self.decoder_input_size)
         result = self.decoder(result)
         result = self.final_layer(result)
         return result
