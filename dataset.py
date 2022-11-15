@@ -298,37 +298,37 @@ class VAEDataset(LightningDataModule):
         
 #       =========================  CelebA Dataset  =========================
     
-        # train_transforms = get_CelebA_transform('train',self.patch_size)
-        # val_transforms = get_CelebA_transform('test',self.patch_size)
-        # self.train_dataset = MyCelebA(
-        #     self.data_dir,
-        #     split='train',
-        #     transform=train_transforms,
-        #     download=False,
-        # )
-        
-        # # Replace CelebA with your dataset
-        # self.val_dataset = MyCelebA(
-        #     self.data_dir,
-        #     split='test',
-        #     transform=val_transforms,
-        #     download=False,
-        # )
-#       =========================  DeepFashion Dataset  =========================
-        train_transforms = get_DeepFashion_transform('train',self.patch_size)
-        val_transforms = get_DeepFashion_transform('val',self.patch_size)
-        self.train_dataset = DeepFashion(
+        train_transforms = get_CelebA_transform('train',self.patch_size)
+        val_transforms = get_CelebA_transform('test',self.patch_size)
+        self.train_dataset = MyCelebA(
             self.data_dir,
             split='train',
             transform=train_transforms,
+            download=False,
         )
         
         # Replace CelebA with your dataset
-        self.val_dataset = DeepFashion(
+        self.val_dataset = MyCelebA(
             self.data_dir,
             split='test',
             transform=val_transforms,
+            download=False,
         )
+#       =========================  DeepFashion Dataset  =========================
+        # train_transforms = get_DeepFashion_transform('train',self.patch_size)
+        # val_transforms = get_DeepFashion_transform('val',self.patch_size)
+        # self.train_dataset = DeepFashion(
+        #     self.data_dir,
+        #     split='train',
+        #     transform=train_transforms,
+        # )
+        
+        # # Replace CelebA with your dataset
+        # self.val_dataset = DeepFashion(
+        #     self.data_dir,
+        #     split='test',
+        #     transform=val_transforms,
+        # )
 
 #       ===============================================================
 
