@@ -10,7 +10,8 @@ from pytorch_lightning import Trainer
 from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.utilities.seed import seed_everything
 from pytorch_lightning.callbacks import LearningRateMonitor, ModelCheckpoint
-from dataset import VAEDataset
+# from dataset import VAEDataset
+from vae_dataset import VAEDataset
 from pytorch_lightning.plugins import DDPPlugin
 
 
@@ -58,5 +59,5 @@ Path(f"{tb_logger.log_dir}/Samples").mkdir(exist_ok=True, parents=True)
 Path(f"{tb_logger.log_dir}/Reconstructions").mkdir(exist_ok=True, parents=True)
 
 
-print(f"======= Training {config['model_params']['name']} =======")
+print(f"======= Training {config['model_params']['name']} on {config['data_params']['dataset_name']} =======")
 runner.fit(experiment, datamodule=data)

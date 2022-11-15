@@ -1,10 +1,13 @@
 model_params:
-  name: 'MSSIMVAE'
+  name: 'LVAE'
   in_channels: 3
-  latent_dim: 128
+  latent_dims: [4,8,16,32,128]
+  hidden_dims: [32, 64,128, 256, 512]
 
 data_params:
-  data_path: "Data/"
+  dataset_name: 'CelebA'
+  # data_path: "/data/users/gkoren2/datasets/celeba/"   # gpu15
+  data_path: "/home/guy/sd1tb/datasets/CelebA/"   # guyx
   train_batch_size: 64
   val_batch_size:  64
   patch_size: 64
@@ -24,4 +27,4 @@ trainer_params:
 
 logging_params:
   save_dir: "logs/"
-  name: "MSSIMVAE"
+  name: "LVAE"

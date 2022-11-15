@@ -1,12 +1,17 @@
 model_params:
-  name: 'HVAE'
+  name: 'CategoricalVAE'
   in_channels: 3
-  latent1_dim: 64
-  latent2_dim: 64
-  pseudo_input_size: 128
+  latent_dim: 512
+  categorical_dim: 40
+  temperature: 0.5
+  anneal_rate: 0.00003
+  anneal_interval: 100
+  alpha: 1.0
 
 data_params:
-  data_path: "Data/"
+  dataset_name: 'CelebA'
+  # data_path: "/data/users/gkoren2/datasets/celeba/"   # gpu15
+  data_path: "/home/guy/sd1tb/datasets/CelebA/"   # guyx
   train_batch_size: 64
   val_batch_size:  64
   patch_size: 64
@@ -26,4 +31,4 @@ trainer_params:
 
 logging_params:
   save_dir: "logs/"
-  name: "VampVAE"
+  name: "CategoricalVAE"

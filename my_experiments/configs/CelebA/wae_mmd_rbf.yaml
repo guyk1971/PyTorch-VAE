@@ -1,11 +1,14 @@
 model_params:
-  name: 'IWAE'
+  name: 'WAE_MMD'
   in_channels: 3
   latent_dim: 128
-  num_samples: 5
+  reg_weight: 5000
+  kernel_type: 'rbf'
 
 data_params:
-  data_path: "Data/"
+  dataset_name: 'CelebA'
+  # data_path: "/data/users/gkoren2/datasets/celeba/"   # gpu15
+  data_path: "/home/guy/sd1tb/datasets/CelebA/"   # guyx
   train_batch_size: 64
   val_batch_size:  64
   patch_size: 64
@@ -13,7 +16,7 @@ data_params:
 
 
 exp_params:
-  LR: 0.007
+  LR: 0.005
   weight_decay: 0.0
   scheduler_gamma: 0.95
   kld_weight: 0.00025
@@ -25,4 +28,9 @@ trainer_params:
 
 logging_params:
   save_dir: "logs/"
-  name: "IWAE"
+  name: "WassersteinVAE_RBF"
+
+
+
+
+

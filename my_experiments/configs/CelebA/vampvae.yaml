@@ -4,8 +4,9 @@ model_params:
   latent_dim: 128
 
 exp_params:
-  dataset: celeba
-  data_path: "../../shared/Data/"
+  dataset_name: 'CelebA'
+  # data_path: "/data/users/gkoren2/datasets/celeba/"   # gpu15
+  data_path: "/home/guy/sd1tb/datasets/CelebA/"   # guyx
   img_size: 64
   batch_size: 144 # Better to have a square number
   LR: 0.005

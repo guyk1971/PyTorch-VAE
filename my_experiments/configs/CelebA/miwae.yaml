@@ -1,18 +1,17 @@
-
 model_params:
-  name: 'VanillaVAE'
+  name: 'MIWAE'
   in_channels: 3
   latent_dim: 128
-
-
+  num_samples: 5
+  num_estimates: 3
 
 data_params:
-  # data_path: "/workspace/datasets/celeba/"
-  data_path: "/data/users/gkoren2/datasets/celeba/"
+  dataset_name: 'CelebA'
+  # data_path: "/data/users/gkoren2/datasets/celeba/"   # gpu15
+  data_path: "/home/guy/sd1tb/datasets/CelebA/"   # guyx
   train_batch_size: 64
   val_batch_size:  64
-  patch_size: 256
-  # patch_size: 64
+  patch_size: 64
   num_workers: 4
 
 
@@ -24,9 +23,10 @@ exp_params:
   manual_seed: 1265
 
 trainer_params:
-  gpus: [0]
-  max_epochs: 100
+  gpus: [1]
+  max_epochs: 10
 
 logging_params:
   save_dir: "logs/"
-  name: "VanillaVAE"
+  name: "MIWAE"
+

@@ -1,12 +1,15 @@
 model_params:
-  name: 'LogCoshVAE'
+  name: 'VQVAE'
   in_channels: 3
-  latent_dim: 128
-  alpha: 10.0
-  beta: 1.0
+  embedding_dim: 64
+  num_embeddings: 512
+  img_size: 64
+  beta: 0.25
 
 data_params:
-  data_path: "Data/"
+  dataset_name: 'CelebA'
+  # data_path: "/data/users/gkoren2/datasets/celeba/"   # gpu15
+  data_path: "/home/guy/sd1tb/datasets/CelebA/"   # guyx
   train_batch_size: 64
   val_batch_size:  64
   patch_size: 64
@@ -16,7 +19,7 @@ data_params:
 exp_params:
   LR: 0.005
   weight_decay: 0.0
-  scheduler_gamma: 0.97
+  scheduler_gamma: 0.0
   kld_weight: 0.00025
   manual_seed: 1265
 
@@ -26,5 +29,4 @@ trainer_params:
 
 logging_params:
   save_dir: "logs/"
-  name: "LogCoshVAE"
-
+  name: 'VQVAE'

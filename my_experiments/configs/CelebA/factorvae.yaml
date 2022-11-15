@@ -1,12 +1,13 @@
 model_params:
-  name: 'WAE_MMD'
+  name: 'FactorVAE'
   in_channels: 3
   latent_dim: 128
-  reg_weight: 100
-  kernel_type: 'imq'
+  gamma: 6.4
 
 data_params:
-  data_path: "Data/"
+  dataset_name: 'CelebA'
+  # data_path: "/data/users/gkoren2/datasets/celeba/"   # gpu15
+  data_path: "/home/guy/sd1tb/datasets/CelebA/"   # guyx
   train_batch_size: 64
   val_batch_size:  64
   patch_size: 64
@@ -14,8 +15,12 @@ data_params:
 
 
 exp_params:
+  submodel: 'discriminator'
+  retain_first_backpass: True
   LR: 0.005
   weight_decay: 0.0
+  LR_2: 0.005
+  scheduler_gamma_2: 0.95
   scheduler_gamma: 0.95
   kld_weight: 0.00025
   manual_seed: 1265
@@ -26,9 +31,6 @@ trainer_params:
 
 logging_params:
   save_dir: "logs/"
-  name: "WassersteinVAE_IMQ"
-
-
-
-
+  name: "FactorVAE"  
+  
 
