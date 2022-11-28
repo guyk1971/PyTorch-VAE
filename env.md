@@ -15,7 +15,7 @@ echo $LD_LIBRARY_PATH
 pip install --upgrade pip
 pip install tensorflow
 conda install -c anaconda jupyter
-conda install -c conda-forge jupyter_contrib_nbextensions
+conda install -c conda-forge jupyter_contrib_nbextensions jupyterthemes
 conda install pandas scikit-learn
 mkdir -p $CONDA_PREFIX/etc/conda/activate.d
 echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/' > $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
