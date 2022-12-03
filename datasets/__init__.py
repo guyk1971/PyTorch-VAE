@@ -7,7 +7,8 @@ from .viton import *
 
 
 datasets =   {'CelebA':MyCelebA,
-              'DeepFashion':DeepFashion,
+              'DeepFashionICSR':DeepFashionISCR,
+              'DeepFashionCATP':DeepFashionCATP,
               'OxfordPets':OxfordPets,
               'VITON':VITON,
               'FashionDataset':FashionDataset}

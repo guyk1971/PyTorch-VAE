@@ -5,7 +5,8 @@ model_params:
 
 
 data_params:
-  data_path: "/data/users/gkoren2/datasets/celeba/"
+  dataset_name: "DeepFashionCATP"
+  data_path: "/home/guy/sd1tb/datasets/deep_fashion/DeepFashion/Category and Attribute Prediction Benchmark"
   train_batch_size: 64
   val_batch_size:  64
   patch_size: 64

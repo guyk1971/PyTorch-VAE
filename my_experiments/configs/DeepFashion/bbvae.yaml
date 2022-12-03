@@ -8,7 +8,8 @@ model_params:
   Capacity_max_iter: 10000
 
 data_params:
-  data_path: "/data/users/gkoren2/datasets/celeba/"
+  dataset_name: "DeepFashionCATP"
+  data_path: "/home/guy/sd1tb/datasets/deep_fashion/DeepFashion/Category and Attribute Prediction Benchmark"
   train_batch_size: 64
   val_batch_size:  64
   patch_size: 64
@@ -22,8 +23,8 @@ exp_params:
   manual_seed: 1265
 
 trainer_params:
-  gpus: [1]
-  max_epochs: 10
+  gpus: [0]
+  max_epochs: 100
 
 logging_params:
   save_dir: "logs/"
