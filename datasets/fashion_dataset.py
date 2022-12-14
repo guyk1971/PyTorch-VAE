@@ -16,7 +16,7 @@ import numpy as np
 class FashionDataset(Dataset):
     '''
     FashionDataset dataset
-    URL: 
+    URL: https://www.kaggle.com/datasets/paramaggarwal/fashion-product-images-dataset
     '''
     
     def __init__(self, dataset_path, split='train',transform=None,**kwargs):
